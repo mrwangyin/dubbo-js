@@ -10,5 +10,5 @@ dubbo:
     name: dubbo
     port: 20888
   registry:
-    address: nacos://10.10.10.203:8848?username=nacos&password=nacos&namespace=dubbo-springboot-demo
-#    address: zookeeper://127.0.0.1:2181
+    address: nacos://124.71.231.54:8848?username=nacos&password=nacos&namespace=dubbojs4
+#    address: zookeeper://124.71.231.54:2181

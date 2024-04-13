@@ -8,5 +8,5 @@ dubbo:
     name: dubbo
     port: 20889
   registry:
-    address: nacos://10.10.1.90:8848?username=nacos&password=nacos&namespace=dubbojs4-ubuntu
-#    address: zookeeper://127.0.0.1:2181
+    address: nacos://124.71.231.54:8848?username=nacos&password=nacos&namespace=dubbojs4
+#    address: zookeeper://124.71.231.54:2181
