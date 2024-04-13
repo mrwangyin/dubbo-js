@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: dubbo-springboot-demo-provider
+server:
+  port: 9999
+dubbo:
+  application:
+    name: ${spring.application.name}
+  protocol:
+    name: dubbo
+    port: 20888
+  registry:
+    address: nacos://10.10.10.203:8848?username=nacos&password=nacos&namespace=dubbo-springboot-demo
+#    address: zookeeper://127.0.0.1:2181
