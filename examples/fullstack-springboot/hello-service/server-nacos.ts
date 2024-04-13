@@ -23,7 +23,8 @@ import services from './service'
 ;(async function main() {
   const dubbo = new DubboService({
     registry: Nacos({
-      connect: '124.71.231.54:8848?username=nacos&password=nacos',
+      // connect: '124.71.231.54:8848?username=nacos&password=nacos',
+      connect: '124.71.231.54:8848',
       namespace: 'dubbojs4',
       logger: console
     }),

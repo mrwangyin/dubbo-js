@@ -15,14 +15,17 @@
  * limitations under the License.
  */
 
-import { helloService } from './hello-service'
-import { demoService } from './demo-service'
-import { errorService } from './error-service'
-import { basicTypeService } from './basic-type-service'
+import { Dubbo, TDubboCallResult } from 'apache-dubbo-consumer'
+import { argumentMap } from 'interpret-util'
 
-export default {
-  helloService,
-  demoService,
-  errorService,
-  basicTypeService
+export interface IErrorProvider {
+  errorTest(): TDubboCallResult<void>
 }
+
+export const ErrorProviderWrapper = { errorTest: argumentMap }
+
+export const errorService = (dubbo: Dubbo): IErrorProvider =>
+  dubbo.proxyService<IErrorProvider>({
+    dubboInterface: 'org.apache.dubbo.demo.ErrorProvider',
+    methods: ErrorProviderWrapper
+  })

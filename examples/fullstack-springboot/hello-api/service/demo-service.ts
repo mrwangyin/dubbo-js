@@ -15,14 +15,28 @@
  * limitations under the License.
  */
 
-import { helloService } from './hello-service'
-import { demoService } from './demo-service'
-import { errorService } from './error-service'
-import { basicTypeService } from './basic-type-service'
+import { Dubbo, TDubboCallResult, java } from 'apache-dubbo-consumer'
+import { argumentMap, JavaString } from 'interpret-util'
 
-export default {
-  helloService,
-  demoService,
-  errorService,
-  basicTypeService
+import { UserRequest } from './UserRequest'
+import { UserResponse } from './UserResponse'
+
+export interface IDemoProvider {
+  sayHello(name: JavaString): TDubboCallResult<string>
+  test(): TDubboCallResult<void>
+  echo(): TDubboCallResult<string>
+  getUserInfo(request: UserRequest): TDubboCallResult<UserResponse>
 }
+
+export const DemoProviderWrapper = {
+  sayHello: argumentMap,
+  test: argumentMap,
+  echo: argumentMap,
+  getUserInfo: argumentMap
+}
+
+export const demoService = (dubbo: Dubbo): IDemoProvider =>
+  dubbo.proxyService<IDemoProvider>({
+    dubboInterface: 'org.apache.dubbo.demo.DemoProvider',
+    methods: DemoProviderWrapper
+  })

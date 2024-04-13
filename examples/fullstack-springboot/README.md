@@ -21,7 +21,7 @@ curl http://localhost:3000
 
 # start service with nacos registry
 yarn run hello-service:nacos
-yarn run hello-service:nacos
+yarn run hello-api:nacos
 
 curl http://localhost:6000
 ```

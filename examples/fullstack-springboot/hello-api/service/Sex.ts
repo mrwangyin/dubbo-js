@@ -15,14 +15,8 @@
  * limitations under the License.
  */
 
-import { helloService } from './hello-service'
-import { demoService } from './demo-service'
-import { errorService } from './error-service'
-import { basicTypeService } from './basic-type-service'
-
-export default {
-  helloService,
-  demoService,
-  errorService,
-  basicTypeService
+export enum Sex {
+  female = 'female',
+  male = 'male'
 }
+//generate by interpret-cli apache-dubbo-js
