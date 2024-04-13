@@ -16,6 +16,7 @@
  */
 
 import Koa from 'koa'
+import Router from 'koa-router'
 import { Dubbo } from 'apache-dubbo-consumer'
 import { Zk } from 'apache-dubbo-registry'
 import services from './service'
@@ -28,14 +29,29 @@ const dubbo = new Dubbo<typeof services>({
   services
 })
 
-// start server
 const server = new Koa()
-server.use(async (ctx) => {
-  const { res, err } = await dubbo.service.helloService.hello('dubbo-js')
+const router = new Router()
+
+router.get('/hello', async (ctx) => {
+  const { res, err } = await dubbo.service.helloService.hello('dubbo-js-zk')
   ctx.body = {
     res,
     err: err?.message
   }
 })
+
+router.get('/demo/sayHello', async (ctx) => {
+  const { res, err } = await dubbo.service.demoService.sayHello(
+    'dubbojs-rpc-java-zk'
+  )
+  ctx.body = {
+    res,
+    err: err?.message
+  }
+})
+
+// 将路由中间件应用到Koa应用中
+server.use(router.routes()).use(router.allowedMethods())
+
 server.listen(3000)
 console.log('hello-api start at port 3000....')

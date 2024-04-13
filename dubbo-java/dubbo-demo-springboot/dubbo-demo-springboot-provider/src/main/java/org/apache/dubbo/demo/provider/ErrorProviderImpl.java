@@ -17,14 +17,20 @@
 
 package org.apache.dubbo.demo.provider;
 
+import com.alibaba.dubbo.rpc.RpcContext;
+import com.alibaba.fastjson.JSON;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.apache.dubbo.demo.CustomizeException;
 import org.apache.dubbo.demo.ErrorProvider;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @DubboService(version = "1.0.0")
 public class ErrorProviderImpl implements ErrorProvider {
   @Override
   public void errorTest() throws CustomizeException {
+    System.out.println("[" + new SimpleDateFormat("HH:mm:ss").format(new Date()) + "] ErrorProvider#errorTest, request from consumer: " + RpcContext.getContext().getRemoteAddress());
     throw new CustomizeException("exception");
   }
 }

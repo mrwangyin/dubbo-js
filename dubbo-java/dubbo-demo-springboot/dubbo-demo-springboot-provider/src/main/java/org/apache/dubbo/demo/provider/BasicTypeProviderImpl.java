@@ -17,14 +17,20 @@
 
 package org.apache.dubbo.demo.provider;
 
+import com.alibaba.dubbo.rpc.RpcContext;
+import com.alibaba.fastjson.JSON;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.apache.dubbo.demo.BasicTypeProvider;
 import org.apache.dubbo.demo.TypeRequest;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @DubboService(version = "2.0.0")
 public class BasicTypeProviderImpl implements BasicTypeProvider {
   @Override
   public TypeRequest testBasicType(TypeRequest request) {
+    System.out.println("[" + new SimpleDateFormat("HH:mm:ss").format(new Date()) + "] BasicTypeProvider#testBasicType request:" + JSON.toJSONString(request) + ", request from consumer: " + RpcContext.getContext().getRemoteAddress());
     return request;
   }
 }

@@ -18,6 +18,7 @@
 package org.apache.dubbo.demo.provider;
 
 import com.alibaba.dubbo.rpc.RpcContext;
+import com.alibaba.fastjson.JSON;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.apache.dubbo.config.annotation.Method;
 import org.apache.dubbo.demo.DemoProvider;
@@ -40,17 +41,19 @@ public class DemoProviderImpl implements DemoProvider {
 
   @Override
   public String echo() {
+    System.out.println("[" + new SimpleDateFormat("HH:mm:ss").format(new Date()) + "] DemoProvider#echo " + ", request from consumer: " + RpcContext.getContext().getRemoteAddress());
     return "pang";
   }
 
   @Override
   public void test() {
+    System.out.println("[" + new SimpleDateFormat("HH:mm:ss").format(new Date()) + "] DemoProvider#test " + ", request from consumer: " + RpcContext.getContext().getRemoteAddress());
     System.out.println("test");
   }
 
   @Override
   public UserResponse getUserInfo(UserRequest request) {
-    System.out.println(request);
+    System.out.println("[" + new SimpleDateFormat("HH:mm:ss").format(new Date()) + "] DemoProvider#getUserInfo request:"+JSON.toJSONString(request) + ", request from consumer: " + RpcContext.getContext().getRemoteAddress());
     UserResponse response = new UserResponse();
     response.setStatus("ok");
     Map<String, String> map = new HashMap<String, String>();

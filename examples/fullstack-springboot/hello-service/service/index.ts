@@ -16,5 +16,9 @@
  */
 
 import HelloService from './hello-service'
+import TestService from './test-service'
 
-export default { HelloService: new HelloService() }
+export default {
+  HelloService: new HelloService(),
+  TestService: new TestService()
+}

@@ -1,0 +1,7 @@
+### org.apache.dubbo.demo.controller.GenericCallController.callJavaProvider
+GET localhost:9999/generic/callJavaProvider
+
+### dubbo java consumer -> dubbo js provider
+## org.apache.dubbo.demo.controller.GenericCallController.callNodeJsProvider
+## 报错：Failed to check the status of the service org.apache.dubbojs.service.TestService. No provider available for the service org.apache.dubbojs.service.TestService:1.0.0 from the url consumer://172.17.0.1/org.apache.dubbojs.service.TestService?application=dubbo-springboot-demo-provider&async=false&background=false&dubbo=2.0.2&generic=true&interface=org.apache.dubbojs.service.TestService&pid=44926&qos.enable=true&register.ip=172.17.0.1&release=3.1.11&side=consumer&sticky=false&timestamp=1712993808180&unloadClusterRelated=false&version=1.0.0 to the consumer 172.17.0.1 use dubbo version 3.1.11
+GET localhost:9999/generic/callNodeJsProvider

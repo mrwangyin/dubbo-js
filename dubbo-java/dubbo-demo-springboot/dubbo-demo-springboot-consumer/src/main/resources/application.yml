@@ -8,7 +8,7 @@ dubbo:
     name: ${spring.application.name}
   protocol:
     name: dubbo
-    port: 20888
+  #    port: 20888
   registry:
     address: nacos://124.71.231.54:8848?username=nacos&password=nacos&namespace=dubbojs4
 #    address: zookeeper://124.71.231.54:2181

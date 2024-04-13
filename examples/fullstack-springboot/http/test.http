@@ -1,8 +1,12 @@
 ### dubbojs -> dubbojs 可以调通
 GET localhost:6000/hello
 
+### dubbojs -> dubbojs 加version (Nacos 注册中心)
+## 有几率报错：Cannot read property 'path' of undefined
+## 有几率报错：org.apache.dubbojs.service.TestService?group=&version=0.0.0
+GET localhost:6000/test/goodBye
 
-### dubbojs -> dubbojava
+### dubbojs -> dubbojava  (Nacos 注册中心)
 ## 报错："err": "Cannot read property 'dubboVersion' of undefined"
 ## 在 new Dubbo<typeof services> 构造属性中加了 dubboVersion 后，就报下方错误：
 ## 报错：Cannot read property 'path' of undefined

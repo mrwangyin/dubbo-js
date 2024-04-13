@@ -19,10 +19,12 @@ import { helloService } from './hello-service'
 import { demoService } from './demo-service'
 import { errorService } from './error-service'
 import { basicTypeService } from './basic-type-service'
+import { testService } from './test-service'
 
 export default {
   helloService,
   demoService,
   errorService,
-  basicTypeService
+  basicTypeService,
+  testService
 }

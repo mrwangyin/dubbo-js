@@ -30,6 +30,8 @@ s.service(
 
 s.service('org.apache.dubbo.demo.BasicTypeProvider', { version: '2.0.0' })
 
+s.service('org.apache.dubbojs.service.TestService', { version: '1.0.0' })
+
 const dubbo = new Dubbo<typeof services>({
   application: {
     name: 'hello-api'
@@ -51,6 +53,14 @@ const router = new Router()
 
 router.get('/hello', async (ctx) => {
   const { res, err } = await dubbo.service.helloService.hello('dubbo-js')
+  ctx.body = {
+    res,
+    err: err?.message
+  }
+})
+
+router.get('/test/goodBye', async (ctx) => {
+  const { res, err } = await dubbo.service.testService.goodBye('lisi')
   ctx.body = {
     res,
     err: err?.message
