@@ -22,7 +22,7 @@ import services from './service'
 // start
 ;(async function main() {
   const dubbo = new DubboService({
-    registry: Zk({ connect: 'localhost:2181' }),
+    registry: Zk({ connect: '124.71.231.54:2181' }),
     services
   })
   await dubbo.ready()

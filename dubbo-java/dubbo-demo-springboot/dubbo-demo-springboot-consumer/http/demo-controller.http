@@ -1,0 +1,14 @@
+### org.apache.dubbo.demo.controller.DemoController.test
+GET localhost:9999/demo/test
+
+
+### org.apache.dubbo.demo.controller.DemoController.sayHello
+GET localhost:9999/demo/sayHello?var1=world
+
+
+### org.apache.dubbo.demo.controller.DemoController.echo
+GET localhost:9999/demo/echo
+
+
+### org.apache.dubbo.demo.controller.DemoController.getUserInfo
+GET localhost:9999/demo/getUserInfo

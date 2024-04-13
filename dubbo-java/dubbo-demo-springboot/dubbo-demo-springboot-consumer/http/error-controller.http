@@ -1,0 +1,2 @@
+### org.apache.dubbo.demo.controller.ErrorController.errorTest
+GET localhost:9999/error/errorTest

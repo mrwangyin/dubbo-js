@@ -19,8 +19,8 @@
 
   <dependencies>
     <dependency>
-      <groupId>cn.mrwangyin</groupId>
-      <artifactId>dubbo-spring-boot-demo-interface</artifactId>
+      <groupId>org.apache.dubbo</groupId>
+      <artifactId>dubbo-demo-springboot-api</artifactId>
       <version>${project.parent.version}</version>
     </dependency>
 

@@ -1,0 +1,2 @@
+### org.apache.dubbo.demo.controller.BasicTypeController.testBasicType
+GET localhost:9999/basicType/testBasicType

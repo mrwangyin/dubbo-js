@@ -24,7 +24,7 @@ const dubbo = new Dubbo<typeof services>({
   application: {
     name: 'hello-api'
   },
-  registry: Zk({ connect: 'localhost:2181' }),
+  registry: Zk({ connect: '124.71.231.54:2181' }),
   services
 })
 
