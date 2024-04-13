@@ -34,6 +34,9 @@ const dubbo = new Dubbo<typeof services>({
   application: {
     name: 'hello-api'
   },
+  // 因为执行 /demo/sayHello 调用时报错："err": "Cannot read property 'dubboVersion' of undefined"
+  // 所以加了 dubboVersion
+  dubboVersion: '2.0.0',
   registry: Nacos({
     // connect: '124.71.231.54:8848?username=nacos&password=nacos',
     connect: '124.71.231.54:8848',
@@ -54,7 +57,7 @@ router.get('/hello', async (ctx) => {
   }
 })
 
-router.post('/demo/sayHello', async (ctx) => {
+router.get('/demo/sayHello', async (ctx) => {
   const { res, err } = await dubbo.service.demoService.sayHello(
     'dubbojs-rpc-java'
   )

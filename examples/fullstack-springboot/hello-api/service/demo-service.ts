@@ -22,21 +22,29 @@ import { UserRequest } from './UserRequest'
 import { UserResponse } from './UserResponse'
 
 export interface IDemoProvider {
-  sayHello(name: JavaString): TDubboCallResult<string>
-  test(): TDubboCallResult<void>
-  echo(): TDubboCallResult<string>
-  getUserInfo(request: UserRequest): TDubboCallResult<UserResponse>
+  sayHello(name: string): Promise<TDubboCallResult<string>>
+  // test(): TDubboCallResult<void>
+  // echo(): TDubboCallResult<string>
+  // getUserInfo(request: UserRequest): TDubboCallResult<UserResponse>
 }
 
-export const DemoProviderWrapper = {
-  sayHello: argumentMap,
-  test: argumentMap,
-  echo: argumentMap,
-  getUserInfo: argumentMap
-}
+// export const DemoProviderWrapper = {
+//   sayHello: argumentMap,
+//   test: argumentMap,
+//   echo: argumentMap,
+//   getUserInfo: argumentMap
+// }
 
 export const demoService = (dubbo: Dubbo): IDemoProvider =>
   dubbo.proxyService<IDemoProvider>({
     dubboInterface: 'org.apache.dubbo.demo.DemoProvider',
-    methods: DemoProviderWrapper
+    // methods: DemoProviderWrapper
+    // 因为调用时报错： "err": "Cannot read property 'path' of undefined"
+    // 所以添加了 path，但是仍然报错
+    path: 'org.apache.dubbo.demo.DemoProvider',
+    methods: {
+      sayHello(name: string) {
+        return [java.String(name)]
+      }
+    }
   })
