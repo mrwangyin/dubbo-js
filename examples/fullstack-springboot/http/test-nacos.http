@@ -1,4 +1,4 @@
-### dubbojs -> dubbojs 可以调通
+### dubbojs -> dubbojs 可以调通 (Nacos 注册中心)
 GET localhost:6000/hello
 
 ### dubbojs -> dubbojs 加version (Nacos 注册中心)

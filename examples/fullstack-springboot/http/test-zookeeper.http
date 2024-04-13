@@ -1,0 +1,10 @@
+### dubbojs -> dubbojs 可以调通 (Zookeeper 注册中心)
+GET localhost:3000/hello
+
+### dubbojs -> dubbojs 加version 可以调通 (Zookeeper 注册中心)
+GET localhost:3000/test/goodBye
+
+### dubbojs -> dubbojava  (Zookeeper 注册中心)
+## 报错："err": "Could not find any agent worker with org.apache.dubbo.demo.DemoProvider"
+GET localhost:3000/demo/sayHello
+

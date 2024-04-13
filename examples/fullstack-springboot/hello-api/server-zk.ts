@@ -17,9 +17,20 @@
 
 import Koa from 'koa'
 import Router from 'koa-router'
-import { Dubbo } from 'apache-dubbo-consumer'
+import { Dubbo, s } from 'apache-dubbo-consumer'
 import { Zk } from 'apache-dubbo-registry'
 import services from './service'
+
+s.service(
+  ['org.apache.dubbo.demo.DemoProvider', 'org.apache.dubbo.demo.ErrorProvider'],
+  {
+    version: '1.0.0'
+  }
+)
+
+s.service('org.apache.dubbo.demo.BasicTypeProvider', { version: '2.0.0' })
+
+s.service('org.apache.dubbojs.service.TestService', { version: '1.0.0' })
 
 const dubbo = new Dubbo<typeof services>({
   application: {
@@ -33,7 +44,15 @@ const server = new Koa()
 const router = new Router()
 
 router.get('/hello', async (ctx) => {
-  const { res, err } = await dubbo.service.helloService.hello('dubbo-js-zk')
+  const { res, err } = await dubbo.service.helloService.hello('dubbo-js')
+  ctx.body = {
+    res,
+    err: err?.message
+  }
+})
+
+router.get('/test/goodBye', async (ctx) => {
+  const { res, err } = await dubbo.service.testService.goodBye('lisi')
   ctx.body = {
     res,
     err: err?.message
@@ -42,7 +61,7 @@ router.get('/hello', async (ctx) => {
 
 router.get('/demo/sayHello', async (ctx) => {
   const { res, err } = await dubbo.service.demoService.sayHello(
-    'dubbojs-rpc-java-zk'
+    'dubbojs-rpc-java'
   )
   ctx.body = {
     res,

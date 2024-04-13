@@ -41,7 +41,7 @@ export const demoService = (dubbo: Dubbo): IDemoProvider =>
     // methods: DemoProviderWrapper
     // 因为调用时报错： "err": "Cannot read property 'path' of undefined"
     // 所以添加了 path，但是仍然报错
-    path: 'org.apache.dubbo.demo.DemoProvider',
+    // path: 'org.apache.dubbo.demo.DemoProvider',
     methods: {
       sayHello(name: string) {
         return [java.String(name)]

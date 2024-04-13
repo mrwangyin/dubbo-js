@@ -12,6 +12,20 @@ cd nacos
 java -jar dubbo-demo-springboot-consumer-1.0-SNAPSHOT.jar
 ```
 
+#### 启用 dubbo java provider 使用 zookeeper 注册中心
+
+```shell
+cd zookeeper
+java -jar dubbo-demo-springboot-provider-1.0-SNAPSHOT.jar
+```
+
+#### 启用 dubbo java consumer 使用 zookeeper 注册中心
+
+```shell
+cd zookeeper
+java -jar dubbo-demo-springboot-consumer-1.0-SNAPSHOT.jar
+```
+
 #### 测试 dubbo-java-consumer -> dubbo-java-provider
 
 ##### [demo-controller.http](dubbo-demo-springboot-consumer%2Fhttp%2Fdemo-controller.http)
@@ -38,8 +52,13 @@ curl http://localhost:9999/demo/getUserInfo
 curl http://localhost:9999/basicType/testBasicType
 ```
 
-##### [basic-type-controller.http](dubbo-demo-springboot-consumer%2Fhttp%2Fbasic-type-controller.http)
+##### [generic-call-controller.http](http%2Fgeneric-call-controller.http)
 
 ```shell
 curl http://localhost:9999/generic/callJavaProvider
+```
+
+```shell
+## No provider available for the service
+curl http://localhost:9999/generic/callNodeJsProvider
 ```
